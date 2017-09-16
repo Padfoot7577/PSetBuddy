@@ -1,7 +1,7 @@
 # PSetBuddies
-HackMIT 2017
+HackMIT 2017 \n
 
-Project Description 
+Project Description \n
 PsetBuddies is a platform that connect MIT students through analyzing their coursework and study habits. 
 As students at MIT, we feel that colleges like MIT are full of outstanding people, and there should be more opportunities 
 for people of congenial academic interests to meet. 
