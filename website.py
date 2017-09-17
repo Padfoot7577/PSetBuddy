@@ -13,14 +13,6 @@ def dataasp():
 	fn=request.form["firstname"]
 	ln=request.form["lastname"]
 	email=request.form["email"]
-	# classyear=request.form["classyear"]
-	# major1=request.form["major1"]
-	# major2=request.form["major2"]
-	# classes=request.form["classes"]
-	# residence=request.form.get("residence")
-	# studyplace=request.form["studyplace"]
-	# time=request.form["time"]
-	# animal=request.form["animal"]
 
 	dic={"info":[fn+' '+ln,email], "vectors":[]}
 
@@ -34,7 +26,7 @@ def dataasp():
 	dic["vectors"].append(request.form["classes"])
 	print (dic)
 
-	return dic
+	return email
 
 
 
