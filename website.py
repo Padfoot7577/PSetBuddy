@@ -79,6 +79,7 @@ def dataasp():
 	database_index = update_index_db(dic["info"])
 	update_vector_db(dic["vectors"])
 	train.clusterize()
+	train.visualize_cluster(visualize=False)
 	buddy_id = train.find_buddy(database_index) + 1
 
 	with open("student_info.csv", newline='') as csvfile:

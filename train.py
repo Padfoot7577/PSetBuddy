@@ -23,7 +23,7 @@ def clusterize():
 
 #start = time.time()
   
-#field_cats = utils.load_categories(os.path.join(PROJ_DIR, 'categories.txt'))
+#     field_cats = utils.load_categories(os.path.join(PROJ_DIR, 'categories.txt'))
     data = pd.read_csv(os.path.join(PROJ_DIR, 'student_data_for_import.csv'))
 # print(data)
     ds = data.apply(pd.Series.nunique)
@@ -63,10 +63,17 @@ def find_buddy(database_index):
 
 
 # Analyze Cluster (TODO)
-# K_SHOW = 18  # best K and then some other k
-# with open(os.path.join(MODELS_DIR, 'cmm_k%d.pkl' % K_SHOW), 'rb') as f_model:
-#     model = pickle.load(f_model)
-# utils.print_clusters(model, data.columns, field_cats)
+def visualize_cluster(visualize=False):
+    if visualize:
+        K_SHOW = 18  # best K and then some other k
+        PROJ_DIR = os.path.abspath(os.path.dirname(__file__))
+        MODELS_DIR = os.path.join(PROJ_DIR, 'models')
+        # TODO: Fix field_cats through categories.txt!
+        field_cats = utils.load_categories(os.path.join(PROJ_DIR, 'categories.txt'))
+        data = pd.read_csv(os.path.join(PROJ_DIR, 'student_data_for_import.csv'))
+        with open(os.path.join(MODELS_DIR, 'cmm_k%d.pkl' % K_SHOW), 'rb') as f_model:
+            model = pickle.load(f_model)
+        utils.print_clusters(model, data.columns, field_cats)
 
 # start = time.time()
 #   
