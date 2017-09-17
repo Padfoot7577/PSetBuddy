@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+# import train.py
 
 website = Flask(__name__)
 
@@ -26,7 +27,14 @@ def dataasp():
 	dic["vectors"].append(request.form["classes"])
 	print (dic)
 
-	return email
+	fname=fn
+	lname=ln
+
+	graphics=render_template("getmatched.html", f_name=fname, l_name=lname, email=email)
+
+
+
+	return graphics 
 
 
 

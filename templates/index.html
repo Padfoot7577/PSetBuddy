@@ -1,51 +1,71 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title> PsetBuddy Finder</title>
+
   </head>
 
-  <body>
+  <body style="text-align:center; font-family:Verdana;font-size: 14px" background="http://i.huffpost.com/gen/2736712/images/o-MIT-facebook.jpg" }>
+  <div align="center" >
+    <fieldset style="height:600px ; width:980px ">
+    <style type="text/css">
+        fieldset { 
+        display: block;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding-top: 0.35em;
+        padding-bottom: 0.625em;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+        border: 2px groove (internal value);
+        background-color:rgba(255,255,255,0.6);
+
+    }
+    </style>
+
     <h1>Welcome to MIT.</h1>
     <h2>
 
-    <form method="post" action="." name="form1" id="01">
-    
-    First Name:<input type="text", name="firstname" form="01">
-    Last Name:<input type="text", name="lastname" form="01"><br><br>
+    <form method="post" action="." name="form1" id="01" style="font-size: 18px; 
+    font-weight:normal" background:#FFFFFF>
+    First Name:<input type="text", name="firstname" form="01" style="font-size: 18px; height:20px">
+    Last Name:<input type="text", name="lastname" form="01" style="font-size: 18px ;height:20px">
+    <br><br>
 
-    Email: <input type="email" name="email">
+    Email: <input type="text" name="email", style="font-size: 18px; height:20px">
     Class Year:
-    <select name="classyear" form="01">
-	  <option value ="2021">2021</option>
-	  <option value ="2020">2020</option>
-	  <option value="2019">2019</option>
-	  <option value="2018">2019</option>
-      <option value="G/MEng">2019</option>
+    <select name="classyear" form="01" style="font-size: 18px">
+	  <option value ="2021" style="font-size: 18px">2021</option>
+	  <option value ="2020" style="font-size: 18px">2020</option>
+	  <option value="2019" style="font-size: 18px">2019</option>
+	  <option value="2018" style="font-size: 18px">2018</option>
+      <option value="G/MEng" style="font-size:18px">G／MEng</option>
 	</select><br><br>
 
-    Major1: 
-    <select name="major1" form="01">
+    Primary Major: 
+    <select name="major1" form="01" style="font-size: 50px">
 	  <option value ="1">1</option><option value ="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value ="10">10</option><option value ="11">11</option><option value ="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value ="20">20</option><option value ="21">21</option><option value ="22">22</option><option value="23">23</option><option value="24">24</option><option value="None"></option>	  
-	</select>  
+	</select> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-    Major2:
-    <select name="major2" form="01">
+    Secondary Major:
+    <select name="major2" form="01" style="font-size: 18px">
 	  <option value ="1">1</option><option value ="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value ="10">10</option><option value ="11">11</option><option value ="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value ="20">20</option><option value ="21">21</option><option value ="22">22</option><option value="23">23</option><option value="24">24</option><option value="None"></option>	  
 	</select><br><br>   
 
-    Classes you are taking: <input type="text", name="classes"><br>
-    <font size="3">*Please separate your classes by semi colon</font><br><br>
+    Classes you are taking: <input type="text", name="classes", style="font-size: 18px"><br>
+    <font size="2.5">*Please separate your classes by semi colon</font><br><br>
 
     Where do you live?<br>
-    <select name="residence" form="01">
+    <select name="residence" form="01" style="font-size: 18px">
 	  <option value ="Cambridge">Campus Side</option>
 	  <option value ="Boston">Boston Side</option>
 	  <option value="Other">Others</option>
-	</select><br>
+	</select><br><br>
 
     Places you most prefer to study:<br>
-    <select name="studyplace" form="01">
-	  <option value ="Library">Library</option>
+    <select name="studyplace" form="01" style="font-size: 18px">
+	  <option value ="Library" style="font-size: 18px">Library</option>
 	  <option value ="Cafe">Cafe</option>
 	  <option value="Dorm">Dorm</option>
 	  <option value="Commons/lounge">Commons/Lounge</option>
@@ -53,7 +73,7 @@
 	</select><br><br>
 
     Are you a morning/night person?<br>
-    <select name="time" form="01">
+    <select name="time" form="01" style="font-size: 18px">
 	  <option value ="Morning">Morning</option>
 	  <option value ="Night">Night</option>
 	  <option value="24/7">24/7</option>
@@ -61,7 +81,7 @@
 	</select><br><br>
 
     Do you prefer dogs or cats?<br>
-    <select name="animal" form="01">
+    <select name="animal" form="01" style="font-size: 18px">
 	  <option value ="Dogs">Dogs</option>
 	  <option value ="Cats">Cats</option>
 	  <option value="Both">Both</option>
@@ -69,6 +89,8 @@
 	</select><br><br>
 
     <input type="submit" value="Get Matched!" style="font-size: 50px">
+    </fieldset>
+    </div>
     </form>
 
   </body>
