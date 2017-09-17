@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# Changes to this file will not be used during grading
 
 import glob
 import os

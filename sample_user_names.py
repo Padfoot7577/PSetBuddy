@@ -1,3 +1,5 @@
+import csv
+
 first_name=["Annoymous"]*215
 last_name=[
 'Aardvark',
@@ -219,3 +221,10 @@ last_name=[
 email=[]
 for name in last_name:
     email.append(name+"@mit.edu")
+
+with open("student_info.csv", 'w') as csvfile:
+    filewriter = csv.writer(csvfile, delimiter=',', 
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    filewriter.writerow(["Email", "Firstname", "Lastname"])
+    for i in range(0, 215):
+    	filewriter.writerow([email[i], first_name[i], last_name[i]])

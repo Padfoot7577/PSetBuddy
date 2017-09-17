@@ -69,7 +69,7 @@ def parse_year(str):
 
 def parse_major(str):
     major_switch = {
-          "" : 0,
+      "None" : 0,
          "1" : 1,
          "2" : 2,
          "3" : 3,
