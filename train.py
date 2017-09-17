@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
-
 import glob
 import os
 import pickle
 
-import project3 as p3
+import do_clustering as cluster
 import utils as utils
 
 import numpy as np
@@ -13,6 +11,8 @@ import pandas as pd
 import time
 import random
 
+
+# Cluster
 def clusterize():
 
     PROJ_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -21,9 +21,6 @@ def clusterize():
     if not os.path.exists(MODELS_DIR):
         os.mkdir(MODELS_DIR)
 
-# -------------------------------------------------------------------------------
-# 2.5 Cluster
-# -------------------------------------------------------------------------------
 #start = time.time()
   
 #field_cats = utils.load_categories(os.path.join(PROJ_DIR, 'categories.txt'))
@@ -32,14 +29,13 @@ def clusterize():
     ds = data.apply(pd.Series.nunique)
   
     CMM_K_MIN_MAX = (18, 18) # (2, 20)
-    utils.fit_k(p3.CMM, data, *CMM_K_MIN_MAX, MODELS_DIR, verbose=True, ds=ds)
+    utils.fit_k(cluster.CMM, data, *CMM_K_MIN_MAX, MODELS_DIR, verbose=True, ds=ds)
   
 #end = time.time()
 #print("Runtime:", end - start)
-# -------------------------------------------------------------------------------
-# 2.6 Choose from Cluster
-# -------------------------------------------------------------------------------
 
+
+# Choose from Cluster
 # Beware of off-by-one errors! database's 0th row contains category labels!
 def find_buddy(database_index):
     PROJ_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -66,24 +62,20 @@ def find_buddy(database_index):
     return guess # return the index of the buddy in the database
 
 
-
-# -------------------------------------------------------------------------------
-# 2.7 Analyze Cluster (TODO)
-# -------------------------------------------------------------------------------
-
-# K_SHOW = 9  # best K and then some other K    # best_k=9, some_other_k=8
+# Analyze Cluster (TODO)
+# K_SHOW = 18  # best K and then some other k
 # with open(os.path.join(MODELS_DIR, 'cmm_k%d.pkl' % K_SHOW), 'rb') as f_model:
 #     model = pickle.load(f_model)
-# utils.print_census_clusters(model, data.columns, field_cats)
+# utils.print_clusters(model, data.columns, field_cats)
 
 # start = time.time()
 #   
 # field_cats = utils.load_categories(os.path.join(PROJ_DIR, 'categories.txt'))
-# data = pd.read_csv(os.path.join(PROJ_DIR, 'census_data.csv.gz'))
+# data = pd.read_csv(os.path.join(PROJ_DIR, 'student_data_for_import.csv'))
 # ds = data.apply(pd.Series.nunique)
 #   
 # CMM_K_MIN_MAX = (9, 9)
-# utils.fit_k(p3.CMM, data, *CMM_K_MIN_MAX, MODELS_DIR, verbose=False, ds=ds)
+# utils.fit_k(cluster.CMM, data, *CMM_K_MIN_MAX, MODELS_DIR, verbose=False, ds=ds)
 #   
 # end = time.time()
 # print("Runtime:", end - start)
