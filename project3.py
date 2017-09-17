@@ -188,6 +188,7 @@ class CMM(MixtureModel):
         """d is a list containing the number of categories for each feature"""
         super(CMM, self).__init__(k)
         self.params['alpha'] = [np.random.dirichlet([1]*d, size=k) for d in ds]
+#         print(ds) # Debug use: examine categories
 
     def e_step(self, data):
         """ Performs the E-step of the EM algorithm
@@ -210,7 +211,8 @@ class CMM(MixtureModel):
         p_xz_api = np.multiply(p_x_zapi, self.pi)
         p_z = p_xz_api / np.sum(p_xz_api, axis=1).reshape(N, 1)
         log_pi = np.log(self.pi)
-        ll = np.sum(p_z * log_pi) + np.sum(p_z * np.log(p_x_zapi))
+#         print(p_xz_api) # DEBUG!
+        ll = np.sum(p_z * log_pi) + np.sum(p_z * np.log(p_x_zapi+1e-4)) ######
         return (ll, p_z)
 
     def m_step(self, data, p_z):

@@ -72,5 +72,5 @@ PetPreference - preferred pet of student
 
 Residence - residence of student
  0: Cambridge
- 1: Boton
+ 1: Boston
  2: Other

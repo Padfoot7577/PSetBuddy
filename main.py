@@ -8,6 +8,7 @@ import pickle
 import project3 as p3
 import utils as utils
 
+import numpy as np
 import pandas as pd
 
 import time
@@ -22,7 +23,7 @@ if not os.path.exists(MODELS_DIR):
 # Part 1.1
 # -------------------------------------------------------------------------------
 
-toy_data = pd.read_csv(os.path.join(PROJ_DIR, 'toy_data.csv')).as_matrix()
+#toy_data = pd.read_csv(os.path.join(PROJ_DIR, 'toy_data.csv')).as_matrix()
 #   
 # for k in range(1, 6):
 #     mu, cluster_assignments = p3.k_means(toy_data, k)
@@ -62,40 +63,43 @@ toy_data = pd.read_csv(os.path.join(PROJ_DIR, 'toy_data.csv')).as_matrix()
 # -------------------------------------------------------------------------------
 # Part 2.5
 # -------------------------------------------------------------------------------
-# #start = time.time()
-#  
-# field_cats = utils.load_categories(os.path.join(PROJ_DIR, 'categories.txt'))
-# data = pd.read_csv(os.path.join(PROJ_DIR, 'census_data.csv.gz'))
-# ds = data.apply(pd.Series.nunique)
-#  
-# CMM_K_MIN_MAX = (2, 20)
-# utils.fit_k(p3.CMM, data, *CMM_K_MIN_MAX, MODELS_DIR, verbose=False, ds=ds)
-#  
-# #end = time.time()
-# #print("Runtime:", end - start)
+#start = time.time()
+  
+#field_cats = utils.load_categories(os.path.join(PROJ_DIR, 'categories.txt'))
+data = pd.read_csv(os.path.join(PROJ_DIR, 'student_data_for_import.csv'))
+# print(data)
+ds = data.apply(pd.Series.nunique)
+  
+CMM_K_MIN_MAX = (2, 20)
+# utils.fit_k(p3.CMM, data, *CMM_K_MIN_MAX, MODELS_DIR, verbose=True, ds=ds)
+  
+#end = time.time()
+#print("Runtime:", end - start)
 # -------------------------------------------------------------------------------
 # Part 2.6b
 # -------------------------------------------------------------------------------
 
-# snaps = glob.glob(os.path.join(MODELS_DIR, 'cmm_*.pkl'))
-# snaps.sort(key=utils.get_k)
-# ks, bics, lls = [], [], []
-# for snap in snaps:
-#     with open(snap, 'rb') as f_snap:
-#         model = pickle.load(f_snap)
-#     ks.append(utils.get_k(snap))
-#     lls.append(model.max_ll)
-#     bics.append(model.bic)
-# utils.plot_ll_bic(ks, lls, bics)
+snaps = glob.glob(os.path.join(MODELS_DIR, 'cmm_*.pkl'))
+snaps.sort(key=utils.get_k)
+ks, bics, lls = [], [], []
+for snap in snaps:
+    with open(snap, 'rb') as f_snap:
+        model = pickle.load(f_snap)
+        print(np.argmax(model.params["p_z"], axis=1))
+        print(np.unique(np.argmax(model.params["p_z"], axis=1)))
+    ks.append(utils.get_k(snap))
+    lls.append(model.max_ll)
+    bics.append(model.bic)
+utils.plot_ll_bic(ks, lls, bics)
 
 # -------------------------------------------------------------------------------
 # Part 2.7
 # -------------------------------------------------------------------------------
 
-K_SHOW = 9  # best K and then some other K    # best_k=9, some_other_k=8
-with open(os.path.join(MODELS_DIR, 'cmm_k%d.pkl' % K_SHOW), 'rb') as f_model:
-    model = pickle.load(f_model)
-utils.print_census_clusters(model, data.columns, field_cats)
+# K_SHOW = 9  # best K and then some other K    # best_k=9, some_other_k=8
+# with open(os.path.join(MODELS_DIR, 'cmm_k%d.pkl' % K_SHOW), 'rb') as f_model:
+#     model = pickle.load(f_model)
+# utils.print_census_clusters(model, data.columns, field_cats)
 
 # start = time.time()
 #   

@@ -17,6 +17,8 @@ def generate_class_vectors(input_l):
     # print(total_classes)
     total_classes_list=list(total_classes)
     total_classes_list.sort()
+    # TODO: total_classes_list = find_total_classes(input_l)
+    # Use to replace all lines above
     labels = input_l[0]
     labels.extend(total_classes_list)
     # print(labels)
@@ -152,5 +154,6 @@ if __name__ == "__main__":
     #print(generate_class_vectors(data))
     # for row in final_data:
     #     print(len(row))
-    csv_writer("student_data_for_import.csv", final_data)
+    print(final_data)
+    # csv_writer("student_data_for_import.csv", final_data)
     
